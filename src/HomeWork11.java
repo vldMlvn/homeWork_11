@@ -12,16 +12,16 @@ public class HomeWork11 {
     }
     public static List<String> sortedName(List<String> names) {
         Stream<String> sortedStream = names.stream()
-                .map(String::toUpperCase)
+                .map(n->n.toUpperCase())
                 .sorted(Comparator.reverseOrder());
         return sortedStream.collect(Collectors.toList());
     }
     public static String sortedNumbers(String[] numbers) {
         Stream<String> stream = Arrays.stream(numbers);
         Stream<Integer> numbersStream = stream.flatMap(s -> Arrays.stream(s.split(",\\s*")))
-                .map(Integer::valueOf);
+                .map(i->Integer.valueOf(i));
         String str = numbersStream.sorted().
-                map(String::valueOf)
+                map(s->String.valueOf(s))
                 .collect(Collectors.joining(","));
         return str;
     }
